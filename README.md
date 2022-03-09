@@ -1,1 +1,0 @@
-# dotfiles-suckless-terminal
