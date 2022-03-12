@@ -10,10 +10,7 @@ super + b
 	qutebrowser	
 # firefox private
 super + shift + b
-	qutebrowser -p	
-# emacs
-super + i
-	emacs
+	qutebrowser --target private-window
 # program launcher
 super + d 
 	dmenu_run
