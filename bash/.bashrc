@@ -1,0 +1,17 @@
+alias l='ls -alh'
+alias sc="nvim $HOME/.config/st/config.def.h"
+alias nv="nvim $HOME/.config/nvim/init.vim"
+alias sx="nvim $HOME/.config/sxhkd/sxhkdrc"
+alias bs="nvim $HOME/.config/bspw/bspwmrc"
+alias ql="nvim $HOME/.config/qtile/config.py"
+alias pl="nvim $HOME/.config/polybar/config.ini"
+alias vn="nvim"
+alias vim="nvim"
+alias remove="shred -zu"
+alias compile_c="gcc $1 -o main -Wall -Wextra -Wpedantic"
+alias compile_cc="g++ $1 -o main -Wall -Wextra -Wpedantic"
+
+export PS1="\[\e[0;37m\]\u\[\e[0m\]@\[\e[0;37m\]\h \[\e[32;1m\]\w\n\[\e[39m\]\[\e[32;1m\]❯ \[\e[0m\]"
+export EDITOR="nvim"
+export BROWSER="qutebrowser"
+export PATH="/home/sudurra/.local/bin/:/usr/bin/:/bin/:/usr/sbin:/usr/local/bin:/usr/local/sbin"

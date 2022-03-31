@@ -1,30 +1,7 @@
 filetype plugin indent on
 syntax on
 
-color solarized 
-
-if $TERM == "st-256color"
-	set background=dark
-else
-	set background=light
-endif
-set encoding=UTF-8
-set wrap!
-set mouse=a
-set cursorline
-set noswapfile
-set ts=4
-set sw=4
-set si
-set noerrorbells
-set vb t_vb=
-set guioptions-=T
-set nu
-set clipboard=unnamed
-set clipboard=unnamedplus
-
 call plug#begin()
-
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
@@ -33,12 +10,32 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'ap/vim-css-color'
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
-
 call plug#end()
+
+color solarized
+if $color == 'gruvbox'
+	set termguicolors
+endif
+"set termguicolors
+"set background=light
+set encoding=UTF-8
+set wrap!
+set mouse=a
+set cursorline
+set noswapfile
+set ts=4
+set sw=4
+set noerrorbells
+set nu
+set clipboard=unnamedplus
+
 
 set completeopt=menu,menuone,noselect
 lua <<EOF
@@ -157,6 +154,9 @@ augroup END
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
 
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++20 % -o %:r -Wextra -Wall<CR>
+autocmd filetype c nnoremap <F9> :w <bar> !gcc -std=c11 % -o %:r -Wextra -Wall<CR>
+
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
@@ -169,6 +169,8 @@ if !exists("g:airline_symbols")
 	let g:airline_symbols = {}
 endif
 
+" gruvbox
+"let g:airline_theme = 'base16_gruvbox_dark_medium'
 " airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
