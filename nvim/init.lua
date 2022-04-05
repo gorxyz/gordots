@@ -1,12 +1,3 @@
--- Concise way to escape termcodes
-local function t(str)
-    -- Adjust boolean arguments as needed
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-vim.g.mapleader = t'<Space>'
-vim.g.maplocalleader = t'<Space>'
-
 vim.fn['plug#begin']()
 
 vim.cmd [[Plug 'neovim/nvim-lspconfig']]
@@ -25,18 +16,27 @@ vim.cmd [[Plug 'https://github.com/ryanoasis/vim-devicons']]
 
 vim.fn['plug#end']()
 
+local function t(str)
+    -- Adjust boolean arguments as needed
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+vim.g.mapleader = t'<Space>'
+vim.g.maplocalleader = t'<Space>'
+
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.expandtab = false
-vim.opt.relativenumber= true
+vim.opt.number = true
 vim.opt.ruler = true
 vim.opt.showcmd = true
 vim.opt.title = true
 vim.opt.joinspaces = false
 vim.opt.mouse = 'a'
 vim.opt.laststatus = 2
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.conceallevel = 2
 vim.opt.list = true
@@ -47,6 +47,7 @@ vim.opt.listchars = {
     precedes = '◀',
 }
 
+vim.g.solarized_visibility = 'low'
 vim.opt.background = 'dark'
 vim.cmd [[colorscheme solarized]]
 
@@ -55,15 +56,13 @@ vim.g.bufferline_rotate = 1
 vim.g.bufferline_fixed_index = -1
 vim.g.bufferline_echo = 0
 
--- Map <CR> to :nohl, except in quickfix windows
 vim.cmd [[nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":nohl\<CR>"]]
-
 
 vim.g.NERDAltDelims_c = 1
 vim.api.nvim_set_keymap("n", "<Leader>n", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeFocus<CR>", { silent=true, noremap=true })
 
 vim.g.fzf_command_prefix = 'Fzf'
-vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfRg<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfFiles<CR>", { silent=true, noremap=true })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
@@ -163,3 +162,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+
+vim.cmd 
+[[augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set rnu
+    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+augroup END]]
+
+vim.cmd [[autocmd filetype cpp nnoremap <Leader>j :w <bar> !g++ -std=c++20 % -o %:r -Wextra -Wall<CR>]]
+vim.cmd [[autocmd filetype c nnoremap <Leader>j :w <bar> !gcc -std=c11 % -o %:r -Wextra -Wall<CR>]]
+vim.cmd [[autocmd filetype lua nnoremap <Leader>j :w <bar> !lua %<CR>]]
+vim.cmd [[autocmd filetype python nnoremap <Leader>j :w <bar> !python3 %<CR>]]
+vim.cmd [[autocmd filetype rust nnoremap <Leader>j :w <bar> !cargo run<CR>]]
