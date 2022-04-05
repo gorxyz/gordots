@@ -13,7 +13,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'ap/vim-css-color'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
@@ -35,8 +34,6 @@ set sw=4
 set noerrorbells
 set nu
 set clipboard=unnamedplus
-
-
 set completeopt=menu,menuone,noselect
 lua <<EOF
   local has_words_before = function()
@@ -132,7 +129,7 @@ lua <<EOF
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   local nvim_lsp = require('lspconfig')
-  local servers = {"clangd", "pyright", "rust_analyzer"}
+  local servers = {"clangd", "sumneko_lua", "pyright", "rust_analyzer"}
   for _, lsp in ipairs(servers) do 
 	  nvim_lsp[lsp].setup {
 		  on_attach = lsp_on_attach,
