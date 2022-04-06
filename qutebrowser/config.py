@@ -151,3 +151,5 @@ c.scrolling.smooth = True
 c.downloads.remove_finished = 0
 c.content.blocking.method = 'adblock'
 c.content.autoplay = False
+c.content.javascript.enabled = False
+config.bind('xs', 'config-cycle --temp --print --pattern *://*.{url:host}/* content.javascript.enabled ;; reload')
