@@ -143,7 +143,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.downloads.location.directory = "~/"
 c.url.default_page = 'https://searx.tiekoetter.com'
 c.url.start_pages = 'https://searx.tiekoetter.com'
-c.url.searchengines = {'DEFAULT': 'https://searx.tiekoetter.com/?q={}', 'google_search': 'https://www.google.com/search?q={}', 'youtube_search': 'https://www.youtube.com/results?search_query={}'}
+c.url.searchengines = {'DEFAULT': 'https://searx.tiekoetter.com/?q={}', 'gs': 'https://www.google.com/search?q={}', 'ys': 'https://www.youtube.com/results?search_query={}'}
 
 c.statusbar.show = 'in-mode'
 c.tabs.show = 'multiple'
@@ -152,4 +152,6 @@ c.downloads.remove_finished = 0
 c.content.blocking.method = 'adblock'
 c.content.autoplay = False
 c.content.javascript.enabled = False
-config.bind('xs', 'config-cycle --temp --print --pattern *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('je', 'config-cycle --temp --print --pattern *://*.{url:host}/* content.javascript.enabled ;; reload')
+
+config.set('content.javascript.enabled', True, 'https://www.youtube.com')
