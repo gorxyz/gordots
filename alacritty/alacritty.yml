@@ -150,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 6
+  size: 6.5 
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -377,7 +377,7 @@ cursor:
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  vi_mode_style: None
+  #vi_mode_style: cursor.style
 
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
@@ -427,9 +427,9 @@ mouse:
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+  hide_when_typing: true
 
-  url:
+  #url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a
@@ -441,9 +441,9 @@ mouse:
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    launcher:
-      program: xdg-open
-      args: []
+    #launcher:
+    #  program: xdg-open
+      #args: []
 
     # URL modifiers
     #
@@ -687,8 +687,8 @@ key_bindings:
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  - { key: k,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  - { key: k,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
+  - { key: K,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
+  - { key: K,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
   - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
