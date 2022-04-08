@@ -24,6 +24,7 @@ end
 vim.g.mapleader = t'<Space>'
 vim.g.maplocalleader = t'<Space>'
 
+vim.opt.swapfile = false
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -59,12 +60,17 @@ vim.g.bufferline_echo = 0
 vim.cmd [[nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":nohl\<CR>"]]
 
 vim.g.NERDAltDelims_c = 1
-vim.api.nvim_set_keymap("n", "<Leader>n", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeFocus<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader>t", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeToggle<CR>", { silent=true, noremap=true })
 
 vim.g.fzf_command_prefix = 'Fzf'
 vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfFiles<CR>", { silent=true, noremap=true })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 local cmp = require('cmp')
 cmp.setup({
@@ -132,7 +138,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     virtual_text = {
-      spacing = 8,
+      spacing = 4,
       severity_limit = "Error",
     },
     signs = false,
@@ -162,6 +168,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+vim.cmd [[
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {{ {
+inoremap {} {}
+]]
 
 vim.cmd 
 [[augroup numbertoggle
