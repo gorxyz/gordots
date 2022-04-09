@@ -61,6 +61,8 @@ vim.cmd [[nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":no
 
 vim.g.NERDAltDelims_c = 1
 vim.api.nvim_set_keymap("n", "<Leader>t", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeToggle<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>tabnext<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
 
 vim.g.fzf_command_prefix = 'Fzf'
 vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfFiles<CR>", { silent=true, noremap=true })
