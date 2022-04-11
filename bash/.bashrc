@@ -8,7 +8,7 @@ alias compile_cc="g++ $1 -o main -Wall -Wextra -Wpedantic"
 
 alias cfd="nvim $HOME/.config/dwm/config.def.h"
 alias cfs="nvim $HOME/.config/st/config.def.h"
-alias cfn="nvim $HOME/.config/nvim/init.vim"
+alias cfn="nvim $HOME/.config/nvim/init.lua"
 alias cfc="nvim $HOME/.config/sxhkd/sxhkdrc"
 alias cfb="nvim $HOME/.config/bspw/bspwmrc"
 alias cfq="nvim $HOME/.config/qtile/config.py"
