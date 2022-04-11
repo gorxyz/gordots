@@ -48,9 +48,10 @@ vim.opt.listchars = {
     precedes = '◀',
 }
 
-vim.g.solarized_visibility = 'low'
-vim.opt.background = 'dark'
-vim.cmd [[colorscheme solarized]]
+--vim.g.solarized_visibility = 'low'
+vim.opt.background = 'light'
+vim.cmd("colorscheme gruvbox")
+vim.opt.termguicolors = true
 
 vim.g.airline_powerline_fonts = 1
 vim.g.bufferline_rotate = 1
@@ -189,3 +190,5 @@ vim.cmd [[autocmd filetype c nnoremap <Leader>j :w <bar> !gcc -std=c11 % -o %:r 
 vim.cmd [[autocmd filetype lua nnoremap <Leader>j :w <bar> !lua %<CR>]]
 vim.cmd [[autocmd filetype python nnoremap <Leader>j :w <bar> !python3 %<CR>]]
 vim.cmd [[autocmd filetype rust nnoremap <Leader>j :w <bar> !cargo run<CR>]]
+
+vim.g.airline_theme = 'base16_gruvbox_light_medium'
