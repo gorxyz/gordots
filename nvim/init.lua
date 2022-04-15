@@ -13,16 +13,32 @@ vim.cmd [[Plug 'junegunn/fzf.vim']]
 vim.cmd [[Plug 'https://github.com/vim-airline/vim-airline']]
 vim.cmd [[Plug 'https://github.com/vim-airline/vim-airline-themes']]
 vim.cmd [[Plug 'https://github.com/ryanoasis/vim-devicons']]
+vim.cmd [[Plug 'altercation/vim-colors-solarized']]
+vim.cmd [[Plug 'morhetz/gruvbox']]
 
 vim.fn['plug#end']()
 
 local function t(str)
-    -- Adjust boolean arguments as needed
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+
 vim.g.mapleader = t'<Space>'
 vim.g.maplocalleader = t'<Space>'
+
+vim.g.gruvbox_contrast_light = 'hard'
+vim.g.airline_theme = 'solarized'
+vim.g.airline_powerline_fonts = 1
+
+vim.g.bufferline_rotate = 1
+vim.g.bufferline_fixed_index = -1
+vim.g.bufferline_echo = 0
+
+vim.g.NERDAltDelims_c = 1
+vim.g.fzf_command_prefix = 'Fzf'
+
+vim.cmd('color solarized')
+vim.opt.background = 'dark'
 
 vim.opt.swapfile = false
 vim.opt.softtabstop = 4
@@ -48,24 +64,14 @@ vim.opt.listchars = {
     precedes = '◀',
 }
 
---vim.g.solarized_visibility = 'low'
-vim.opt.background = 'light'
-vim.cmd("colorscheme gruvbox")
-vim.opt.termguicolors = true
 
-vim.g.airline_powerline_fonts = 1
-vim.g.bufferline_rotate = 1
-vim.g.bufferline_fixed_index = -1
-vim.g.bufferline_echo = 0
 
 vim.cmd [[nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":nohl\<CR>"]]
 
-vim.g.NERDAltDelims_c = 1
 vim.api.nvim_set_keymap("n", "<Leader>t", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeToggle<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>tabnext<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
 
-vim.g.fzf_command_prefix = 'Fzf'
 vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfFiles<CR>", { silent=true, noremap=true })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -191,4 +197,4 @@ vim.cmd [[autocmd filetype lua nnoremap <Leader>j :w <bar> !lua %<CR>]]
 vim.cmd [[autocmd filetype python nnoremap <Leader>j :w <bar> !python3 %<CR>]]
 vim.cmd [[autocmd filetype rust nnoremap <Leader>j :w <bar> !cargo run<CR>]]
 
-vim.g.airline_theme = 'base16_gruvbox_light_medium'
+--vim.g.airline_theme = 'base16_gruvbox_light_medium'
