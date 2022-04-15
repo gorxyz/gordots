@@ -53,6 +53,9 @@ bindsym $mod+b exec qutebrowser
 bindsym $mod+Shift+b exec qutebrowser --target private-window
 # start zathura
 bindsym $mod+z exec zathura
+# start herbc
+bindsym $mod+p exec herbc
+
 
 # kill focused window
 bindsym $mod+w kill
