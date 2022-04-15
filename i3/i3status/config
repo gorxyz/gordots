@@ -25,15 +25,15 @@ order += "tztime local"
 
 cpu_usage {
     format= "Cpu: %usage"
+#	interval = 3
 }
 memory {
     format= "Ram: %used"
-    format_degraded = "Free RAM: %available "
 }
 
 ethernet enp2s0 {
         # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip (%speed)"
+        format_up = "E: %ip"
         format_down = "E: down"
 }
 
@@ -55,6 +55,7 @@ run_watch VPN {
 
 tztime local {
         format = "%Y-%m-%d %I:%M:%S %p"
+		interval = 1
 }
 
 disk "/" {
