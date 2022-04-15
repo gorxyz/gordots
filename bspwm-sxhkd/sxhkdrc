@@ -5,25 +5,25 @@
 # terminal emulator
 super + Return
 	st	
-# firefox
+# browser
 super + b
-	qutebrowser	
-# firefox private
-super + shift + b
-	qutebrowser --target private-window
+	$BROWSER
+super + b
+	$BROWSER --target private-window
 # program launcher
 super + d 
 	dmenu_run
-# program launcher (Apps)
-super + shift + d
-	rofi -no-config -no-lazy-grab -show drun -modi drun 
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
+#
 # bspwm hotkeys
+#
+
 # quit/restart bspwm
-super + alt + {q,r}
+super + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -46,13 +46,6 @@ super + g
 # state/flags
 #
 
-# Toggle floating
-super + e
-    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
-        bspc node focused -t floating; \
-    else \
-        bspc node focused -t tiled; \
-    fi
 # set the window state
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
@@ -64,6 +57,7 @@ super + ctrl + {m,x,y,z}
 #
 # focus/swap
 #
+
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
@@ -129,21 +123,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# volume control
-XF86AudioLowerVolume
-	amixer set Master 5%-
-XF86AudioRaiseVolume
-	amixer set Master 5%+
-XF86AudioMute
-	amixer set Master toggle
-
-# brightness control
-XF86MonBrightnessDown
-	sudo xbacklight -dec 5
-XF86MonBrightnessUp
-	sudo xbacklight -inc 5
-
-# lock screen
-super + x
-	betterlockscreen -l
