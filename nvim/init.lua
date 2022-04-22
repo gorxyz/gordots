@@ -26,8 +26,6 @@ end
 vim.g.mapleader = t'<Space>'
 vim.g.maplocalleader = t'<Space>'
 
-vim.g.gruvbox_contrast_light = 'hard'
-vim.g.airline_theme = 'solarized'
 vim.g.airline_powerline_fonts = 1
 
 vim.g.bufferline_rotate = 1
@@ -35,10 +33,17 @@ vim.g.bufferline_fixed_index = -1
 vim.g.bufferline_echo = 0
 
 vim.g.NERDAltDelims_c = 1
-vim.g.fzf_command_prefix = 'Fzf'
 
-vim.cmd('color solarized')
-vim.opt.background = 'dark'
+if vim.env.TERM == "xterm-256color" then
+	vim.cmd('color 256_noir')
+	vim.g.airline_theme = 'sol'
+	vim.opt.background = 'dark'
+else
+	vim.g.airline_theme = 'solarized'
+    vim.g.solarized_visibility = 'low'
+	vim.cmd('color solarized')
+	vim.opt.background = 'dark'
+end
 
 vim.opt.swapfile = false
 vim.opt.softtabstop = 4
@@ -66,13 +71,13 @@ vim.opt.listchars = {
 
 
 
-vim.cmd [[nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":nohl\<CR>"]]
 
 vim.api.nvim_set_keymap("n", "<Leader>t", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeToggle<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>tabnext<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
 
-vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>FzfFiles<CR>", { silent=true, noremap=true })
+vim.api.nvim_set_keymap("n", "<Leader><CR>", "<Cmd>!./build.sh<CR>", { silent=true, noremap=true })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
