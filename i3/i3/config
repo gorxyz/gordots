@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:DejaVu Sans Mono 7.5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -47,10 +47,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec st
 
-# start a browser
-bindsym $mod+b exec qutebrowser
+# start a browser(ungoogled chromium)
+bindsym $mod+b exec chromium
 # start browser in private window
-bindsym $mod+Shift+b exec qutebrowser --target private-window
+bindsym $mod+Shift+b exec chromium --target private-window
 # start zathura
 bindsym $mod+z exec zathura
 # start herbc

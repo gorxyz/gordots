@@ -17,32 +17,32 @@ order += "disk /home"
 order += "ipv6"
 order += "run_watch DHCP"
 order += "run_watch VPN"
-order += "ethernet enp2s0"
+order += "ethernet eth0"
 order += "memory"
 order += "cpu_usage"
 order += "volume master"
 order += "tztime local"
 
 cpu_usage {
-    format= "Cpu: %usage"
+    format= "cpu: %usage"
 #	interval = 3
 }
 memory {
-    format= "Ram: %used"
+    format= "ram: %used"
 }
 
-ethernet enp2s0 {
+ethernet eth0 {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip"
         format_down = "E: down"
 }
 
 volume master {
-		format = "Vol: %volume"
-		format_muted = "Vol: muted (%volume)"
-		device = "default"
-		mixer = "Master"
-		mixer_idx = 0
+	format = "vol: %volume"
+	format_muted = "Vol: muted (%volume)"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
 
 run_watch DHCP {
@@ -55,7 +55,6 @@ run_watch VPN {
 
 tztime local {
         format = "%Y-%m-%d %I:%M:%S %p"
-		interval = 1
 }
 
 disk "/" {
