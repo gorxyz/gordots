@@ -78,12 +78,12 @@ window:
   #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  dynamic_title: true
+  #dynamic_title: true
 
   # Window class (Linux/BSD only):
-  class:
+  #class:
     # Application instance name
-    instance: Alacritty
+    #instance: Alacritty
     # General application class
     #general: Alacritty
 
@@ -111,7 +111,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Liberation Mono
+    family: monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -150,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 6.5 
+  size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -351,7 +351,7 @@ colors:
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
 
-cursor:
+#cursor:
   # Cursor style
   #style:
     # Cursor shape
@@ -369,7 +369,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: On
+    #blinking: Off
 
   # Vi mode cursor style
   #
@@ -377,7 +377,7 @@ cursor:
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  #vi_mode_style: cursor.style
+  #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
@@ -417,7 +417,7 @@ cursor:
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-mouse:
+#mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -427,7 +427,7 @@ mouse:
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: true
+  #hide_when_typing: false
 
   #url:
     # URL launcher
@@ -443,7 +443,7 @@ mouse:
     #   - (Windows) explorer
     #launcher:
     #  program: xdg-open
-      #args: []
+    #  args: []
 
     # URL modifiers
     #
@@ -687,10 +687,10 @@ key_bindings:
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  - { key: K,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  - { key: K,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
-  - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
-  - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
+  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
+  #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
+  #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
