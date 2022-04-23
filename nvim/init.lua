@@ -7,14 +7,12 @@ vim.cmd [[Plug 'hrsh7th/cmp-path']]
 vim.cmd [[Plug 'hrsh7th/cmp-cmdline']]
 vim.cmd [[Plug 'hrsh7th/cmp-nvim-lsp']]
 vim.cmd [[Plug 'hrsh7th/vim-vsnip']]
-vim.cmd [[Plug 'ap/vim-css-color']]
-vim.cmd [[Plug 'preservim/nerdtree']]
+
+vim.cmd [[Plug 'Raimondi/delimitMate']]
 vim.cmd [[Plug 'junegunn/fzf.vim']]
-vim.cmd [[Plug 'https://github.com/vim-airline/vim-airline']]
-vim.cmd [[Plug 'https://github.com/vim-airline/vim-airline-themes']]
 vim.cmd [[Plug 'https://github.com/ryanoasis/vim-devicons']]
-vim.cmd [[Plug 'altercation/vim-colors-solarized']]
-vim.cmd [[Plug 'morhetz/gruvbox']]
+vim.cmd [[Plug 'vim-airline/vim-airline']]
+vim.cmd [[Plug 'vim-airline/vim-airline-themes']]
 
 vim.fn['plug#end']()
 
@@ -26,25 +24,18 @@ end
 vim.g.mapleader = t'<Space>'
 vim.g.maplocalleader = t'<Space>'
 
+vim.g.delimitMate_expand_cr = 1
+
 vim.g.airline_powerline_fonts = 1
 
 vim.g.bufferline_rotate = 1
 vim.g.bufferline_fixed_index = -1
 vim.g.bufferline_echo = 0
 
-vim.g.NERDAltDelims_c = 1
-
-if vim.env.TERM == "xterm-256color" then
-	vim.cmd('color 256_noir')
-	vim.g.airline_theme = 'sol'
-	vim.opt.background = 'dark'
-else
-	vim.g.airline_theme = 'solarized'
-    vim.g.solarized_visibility = 'low'
-	vim.cmd('color solarized')
-	vim.opt.background = 'dark'
-end
-
+vim.g.airline_theme = 'solarized'
+vim.g.solarized_visibility = 'low'
+vim.cmd('color solarized')
+vim.opt.background = 'dark'
 vim.opt.swapfile = false
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -71,10 +62,7 @@ vim.opt.listchars = {
 
 
 
-
-vim.api.nvim_set_keymap("n", "<Leader>t", "<Cmd>silent! NERDTreeFind<CR><Cmd>NERDTreeToggle<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>tabnext<CR>", { silent=true, noremap=true })
-vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
 vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>tabprevious<CR>", { silent=true, noremap=true })
 
 vim.api.nvim_set_keymap("n", "<Leader><CR>", "<Cmd>!./build.sh<CR>", { silent=true, noremap=true })
@@ -181,13 +169,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-vim.cmd [[
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
-]]
 
 vim.cmd 
 [[augroup numbertoggle
