@@ -1,29 +1,26 @@
-# terminal emulator
+# terminnal emulator
+super + ctrl + Return
+	$TERMINAL
+# terminal with termux
 super + Return
-    $TERMINAL
-# rofi
+	dtmux	
+# dmenu (rofi in past)
 super + shift + Return
-	rofi -show run dmenu
+	dmenu_run -c -l 20
 # browser
 super + b
 	$BROWSER
-# pdf reader
-super + z
-    zathura
 # pixel zoomer by tsoding
-super + d
-	boomer
-# rofi calculator
-super + c
-	rofi -show calc -modi calc -no-show-match -no-sort
-# screenshot taker with rofi
-super + e
-	teiler
+super +{_,shift +}d
+	{boomer,deboom}
+# dmenu calculator
+super + n
+	calc
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 # quit/restart bspwm
-super + {q,r}
+super + shift + {q,r}
 	bspc {quit,wm -r}
 # close and kill
 super + {_,shift + }w
@@ -35,7 +32,7 @@ super + m
 super + g
 	bspc node -s biggest.window
 # set the window state
-super + {t,shift + t,s,f}
+super + {a,alt + a,shift + a,ctrl + a}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -46,14 +43,9 @@ super + bracket{left,right}
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + }{1-5,0}
+	bspc {desktop -f,node -d} '^{1-5,10}'
 # preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -66,8 +58,29 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# resizing like in i3
 super + alt + {h,j,k,l}
-    ;dash ~/.config/sxhkd/resize {x -, y +, y -, x +}
+    /home/gor/.config/sxhkd/resize {x -, y +, y -, x +}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+#
+# search with dmenu (rofi in past)
+super + e
+	search
+
+# disk usage
+super + z
+	disk
+# sys information
+super + x
+	sys
+# uptime or date time
+super + {_,shift + } c
+	{time_date,upt}
+# getting weather information
+super + v
+	wttr
+# managing sound
+super + {plus,minus,equal}
+	volume {+,-,=}
